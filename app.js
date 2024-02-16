@@ -6,7 +6,7 @@ const loader = document.querySelector('.loading-dog');
 const BREED_LIST_URL = 'https://dog.ceo/api/breeds/list/all';
 const RANDOM_BREED_IMG_URL = 'https://dog.ceo/api/breeds/image/random';
 
-async function init() {
+function init() {
   addBreedList();
   addRandomImg();
 
