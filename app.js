@@ -53,12 +53,17 @@ async function addRandomImg() {
 }
 
 async function handleBreedChange(e) {
+  const breed = e.target.value;
+
+  // For empty strings
+  if (breed === '') return;
+
+  const IMG_BY_BREED_URL = `https://dog.ceo/api/breed/${breed}/images/random`;
+
   // changing option should hide image and show the spinner/loader
   breedImg.classList.remove('show');
   loader.classList.add('show');
 
-  const breed = e.target.value;
-  const IMG_BY_BREED_URL = `https://dog.ceo/api/breed/${breed}/images/random`;
   try {
     const response = await axios.get(IMG_BY_BREED_URL);
     const breedImgUrl = response.data.message;
