@@ -12,7 +12,7 @@ async function init() {
 
   breedSelect.addEventListener('change', handleBreedChange);
 
-  //   When Image loads, show the image and hide the spinner
+  // When Image loads, show the image and hide the spinner/loader
   breedImg.addEventListener('load', function () {
     // adding image and removing loader
     breedImg.classList.add('show');
@@ -45,6 +45,7 @@ async function addRandomImg() {
     const response = await axios.get(RANDOM_BREED_IMG_URL);
     const randBreedImgUrl = response.data.message;
 
+    // This line doesn't add the image instantly
     breedImg.src = randBreedImgUrl;
   } catch (error) {
     console.error(error);
@@ -52,7 +53,7 @@ async function addRandomImg() {
 }
 
 async function handleBreedChange(e) {
-  // removing image and adding loader
+  // changing option should hide image and show the spinner/loader
   breedImg.classList.remove('show');
   loader.classList.add('show');
 
@@ -62,6 +63,7 @@ async function handleBreedChange(e) {
     const response = await axios.get(IMG_BY_BREED_URL);
     const breedImgUrl = response.data.message;
 
+    // This line doesn't add the image instantly
     breedImg.src = breedImgUrl;
   } catch (error) {
     console.error(error);
