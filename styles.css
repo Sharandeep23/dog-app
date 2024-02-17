@@ -16,7 +16,7 @@ header {
     padding: 30px;
 }
 
-select {
+.breed {
     font-size: inherit;
     padding: 2px 5px;
 }
