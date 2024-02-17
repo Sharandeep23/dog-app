@@ -3,17 +3,23 @@
 }
 
 body {
-    font-family: "Segoe UI", sans-serif;
+    font-family: "Poiret One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
     margin: 0;
 }
 
 header {
-    background-color: #ff4136;
+    background: linear-gradient(90deg, hsla(179, 67%, 66%, 1) 0%, hsla(238, 74%, 61%, 1) 100%);
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 30px;
+}
+
+header h1 {
+    font-size: 3rem;
 }
 
 .breed {
@@ -48,4 +54,14 @@ main {
 
 .show {
     display: block;
+}
+
+
+@media only screen and (max-width: 800px) {
+    header {
+        flex-direction: column;
+    }
+    header h1{
+        margin-top: 0;
+    }
 }
