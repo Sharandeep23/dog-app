@@ -44,7 +44,7 @@ async function handleBreedChange(e) {
 
   const IMG_BY_BREED_URL = `https://dog.ceo/api/breed/${breed}/images/random`;
 
-  // changing option should hide image and show the spinner/loader
+  // changing option should hide image and show the spinner/loader until the img loads
   img.classList.remove('show');
   loader.classList.add('show');
 
