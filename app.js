@@ -7,22 +7,22 @@ const BREED_LIST_URL = 'https://dog.ceo/api/breeds/list/all';
 const RANDOM_BREED_IMG_URL = 'https://dog.ceo/api/breeds/image/random';
 
 function init() {
-  addBreedList();
-  addRandomImg();
+  // Breed list for the select
+  addBreedList(BREED_LIST_URL);
 
+  // Without any selection, a random img will be shown
+  addRandomImg(RANDOM_BREED_IMG_URL);
+
+  // When a breed is selected, hide the img, show the spinner, get the breed img, add it to the DOM.
   breedSelect.addEventListener('change', handleBreedChange);
 
   // When Image loads, show the image and hide the spinner/loader
-  breedImg.addEventListener('load', function () {
-    // adding image and removing loader
-    breedImg.classList.add('show');
-    loader.classList.remove('show');
-  });
+  breedImg.addEventListener('load', handleBreedImgLoad);
 }
 
-async function addBreedList() {
+async function addBreedList(url) {
   try {
-    const response = await axios.get(BREED_LIST_URL);
+    const response = await axios.get(url);
     const breedList = Object.keys(response.data.message);
 
     // First option
@@ -40,9 +40,9 @@ async function addBreedList() {
   }
 }
 
-async function addRandomImg() {
+async function addRandomImg(url) {
   try {
-    const response = await axios.get(RANDOM_BREED_IMG_URL);
+    const response = await axios.get(url);
     const randBreedImgUrl = response.data.message;
 
     // This line doesn't add the image instantly
@@ -73,6 +73,12 @@ async function handleBreedChange(e) {
   } catch (error) {
     console.error(error);
   }
+}
+
+function handleBreedImgLoad() {
+  // adding image and removing loader
+  breedImg.classList.add('show');
+  loader.classList.remove('show');
 }
 
 init();
